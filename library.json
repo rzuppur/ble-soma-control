@@ -1,7 +1,7 @@
 {
   "name": "BLESomaControl",
   "version": "1.0.0",
-  "description": "Unofficial library to control SOMA smart home devices over bluetooth.",
+  "description": "Unofficial library to control SOMA smart blinds over bluetooth from ESP32.",
   "keywords": "esp32, bluetooth, iot, soma",
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-Unofficial library to control SOMA smart blinds over bluetooth.
+Unofficial library to control SOMA smart blinds over bluetooth from ESP32.
 
 ## Use
 
