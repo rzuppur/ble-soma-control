@@ -1,0 +1,28 @@
+{
+  "name": "BLESomaControl",
+  "version": "1.0.0",
+  "description": "Unofficial library to control SOMA smart home devices over bluetooth.",
+  "keywords": "esp32, bluetooth, iot, soma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rzuppur/ble-soma-control.git"
+  },
+  "authors": [
+    {
+      "name": "Reino Zuppur",
+      "email": "reino@reinozuppue.com",
+      "url": "https://reinozuppur.com/"
+    }
+  ],
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/rzuppur/ble-soma-control",
+  "dependencies": {
+    "h2zero/esp-nimble-cpp": "^2.5.0"
+  },
+  "frameworks": [
+    "espidf"
+  ],
+  "platforms": [
+    "espressif32"
+  ]
+}
