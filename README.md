@@ -13,6 +13,8 @@ void main {
 }
 ```
 
+See `/example/src/main.cpp` for a complete example.
+
 ## Example
 
 Run the example project for ESP32-C3

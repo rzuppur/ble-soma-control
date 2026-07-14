@@ -2,5 +2,5 @@
 
 namespace BLESomaControl::Internal::DeviceController {
     bool begin();
-    bool end();
+    bool pause();
 }

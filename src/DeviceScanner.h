@@ -2,5 +2,5 @@
 
 namespace BLESomaControl::Internal::DeviceScanner {
     bool begin();
-    bool end();
+    bool pause();
 }

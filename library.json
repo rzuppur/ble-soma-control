@@ -1,6 +1,6 @@
 {
   "name": "BLESomaControl",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Unofficial library to control SOMA smart blinds over bluetooth from ESP32.",
   "keywords": "esp32, bluetooth, iot, soma",
   "repository": {
@@ -10,7 +10,7 @@
   "authors": [
     {
       "name": "Reino Zuppur",
-      "email": "reino@reinozuppue.com",
+      "email": "reino@reinozuppur.com",
       "url": "https://reinozuppur.com/"
     }
   ],
@@ -24,5 +24,13 @@
   ],
   "platforms": [
     "espressif32"
-  ]
+  ],
+  "export": {
+    "exclude": [
+      ".idea",
+      ".pio",
+      "sdkconfig.esp*",
+      "*.tar.gz"
+    ]
+  }
 }

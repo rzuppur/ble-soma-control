@@ -65,7 +65,7 @@ namespace BLESomaControl::Internal::CallbackRunner {
         return true;
     }
 
-    bool end()
+    bool pause()
     {
         std::lock_guard state_lock(state_mutex);
         if (!running) return false;

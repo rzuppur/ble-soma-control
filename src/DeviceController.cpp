@@ -17,14 +17,16 @@ namespace {
     [[noreturn]] void task(void*)
     {
         while (true) {
-            for (const auto& p_device : BLESomaControl::Internal::getDeviceImpls()) {
-                p_device->tick();
-                if (p_device->update_queued) {
-                    p_device->update();
-                    p_device->update_queued = false;
-                }
-                if (p_device->consumeChanged()) {
-                    BLESomaControl::Internal::CallbackRunner::queueCallback({p_device->address, BLESomaControl::Internal::CallbackRunner::Type::UPDATE});
+            if (running) {
+                for (const auto& p_device : BLESomaControl::Internal::getDeviceImpls()) {
+                    p_device->tick();
+                    if (p_device->update_queued) {
+                        p_device->update();
+                        p_device->update_queued = false;
+                    }
+                    if (p_device->consumeChanged()) {
+                        BLESomaControl::Internal::CallbackRunner::queueCallback({p_device->address, BLESomaControl::Internal::CallbackRunner::Type::UPDATE});
+                    }
                 }
             }
             vTaskDelay(pdMS_TO_TICKS(1000));
@@ -47,7 +49,7 @@ namespace BLESomaControl::Internal::DeviceController {
         return true;
     }
 
-    bool end()
+    bool pause()
     {
         std::lock_guard state_lock(state_mutex);
         if (!running) return false;

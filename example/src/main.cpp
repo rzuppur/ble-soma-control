@@ -10,9 +10,8 @@ void logHeap() { ESP_LOGV(TAG, "Free heap %ikb", esp_get_free_heap_size() / 1000
 
 extern "C" [[noreturn]] void app_main()
 {
-    esp_log_level_set("*", ESP_LOG_WARN);
-    esp_log_level_set("BSC", ESP_LOG_VERBOSE);
-    esp_log_level_set("BSC_EXAMPLE", ESP_LOG_VERBOSE);
+    esp_log_level_set("BSC", ESP_LOG_WARN);
+    esp_log_level_set("BSC_EXAMPLE", ESP_LOG_INFO);
 
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -31,9 +30,9 @@ extern "C" [[noreturn]] void app_main()
         const auto devices = BLESomaControl::getDevices();
         ESP_LOGI(TAG, "%d devices", devices.size());
         for (auto& p_device : devices) {
-            ESP_LOGD(
+            ESP_LOGI(
                 TAG,
-                "%s @%d %s (RSSI %i dBm)",
+                " - %s @%d %s (RSSI %i dBm)",
                 p_device->name().c_str(),
                 p_device->position().value_or(-1),
                 BLESomaControl::Device::state_text(p_device->state()).c_str(),

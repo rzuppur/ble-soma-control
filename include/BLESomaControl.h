@@ -29,8 +29,20 @@
 namespace BLESomaControl {
     using DeviceCallback = std::function<void(uint64_t)>;
 
+    /**
+     * @brief Initializes BLE stack and starts tasks.
+     * @param found Called once when a new device is found, use `getDevice(uint64_t)` to access it.
+     * @param update Called every time device data has changed, use `getDevice(uint64_t)` to access it.
+     * @return success
+     */
     bool begin(DeviceCallback found, DeviceCallback update);
-    bool end();
+
+    /**
+     * @brief Stops scanning and clears found devices. Doesn't delete tasks and ongoing jobs will be finished.
+     * @todo Check if NimBLE deinit can be used to actually close BT stack and later init it without issues
+     * @return success
+     */
+    bool pause();
 
     std::shared_ptr<Device>              getDevice(uint64_t address);
     std::vector<std::shared_ptr<Device>> getDevices();

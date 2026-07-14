@@ -30,6 +30,7 @@ namespace BLESomaControl::Internal {
     {
         {
             std::unique_lock pool_lock(pool_mutex);
+            ESP_LOGV(TAG, "Connection requested, pool at %d / %d", active_connections.size(), POOL_MAX_CONNECTIONS);
             const auto       success = pool_cv.wait_for(pool_lock, POOL_WAIT_TIMEOUT, [&] {
                 return active_connections.size() < POOL_MAX_CONNECTIONS && !active_connections.contains(address);
             });

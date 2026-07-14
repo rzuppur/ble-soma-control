@@ -43,12 +43,12 @@ namespace BLESomaControl {
 
         if (!Internal::DeviceController::begin()) return false;
         if (!Internal::CallbackRunner::begin(std::move(found), std::move(update))) {
-            Internal::DeviceController::end();
+            Internal::DeviceController::pause();
             return false;
         }
         if (!Internal::DeviceScanner::begin()) {
-            Internal::DeviceController::end();
-            Internal::CallbackRunner::end();
+            Internal::DeviceController::pause();
+            Internal::CallbackRunner::pause();
             return false;
         }
 
@@ -57,21 +57,21 @@ namespace BLESomaControl {
         return true;
     }
 
-    bool end()
+    bool pause()
     {
         std::lock_guard state_lock(state_mutex);
         if (!running) return false;
 
-        Internal::DeviceScanner::end();
-        Internal::DeviceController::end();
-        Internal::CallbackRunner::end();
+        Internal::DeviceScanner::pause();
+        Internal::DeviceController::pause();
+        Internal::CallbackRunner::pause();
 
         {
             std::lock_guard devices_lock(devices_mutex);
             devices.clear();
         }
 
-        ESP_LOGD(TAG, "BLESomaControl stopped");
+        ESP_LOGD(TAG, "BLESomaControl paused");
         running = false;
         return true;
     }

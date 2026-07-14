@@ -10,6 +10,6 @@ namespace BLESomaControl::Internal::CallbackRunner {
     };
 
     bool begin(DeviceCallback found, DeviceCallback update);
-    bool end();
+    bool pause();
     bool queueCallback(const Item& item);
 }

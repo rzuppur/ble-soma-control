@@ -41,7 +41,7 @@ namespace {
         auto* p_scan = NimBLEDevice::getScan();
         if (!p_scan->isScanning()) {
             p_scan->setInterval(97);
-            p_scan->setWindow(87);
+            p_scan->setWindow(81);
             p_scan->setMaxResults(0);
             p_scan->setScanCallbacks(&scan_callbacks, true);
             p_scan->setDuplicateFilter(false);
@@ -86,7 +86,7 @@ namespace BLESomaControl::Internal::DeviceScanner {
         return true;
     }
 
-    bool end()
+    bool pause()
     {
         std::lock_guard state_lock(state_mutex);
         if (!running) return false;
