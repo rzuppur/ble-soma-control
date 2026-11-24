@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <NimBLEDevice.h>
 #include <esp_log.h>
 #include <freertos/FreeRTOS.h>
 
@@ -12,7 +13,6 @@
 #include "DeviceController.h"
 #include "DeviceImpl.h"
 #include "DeviceScanner.h"
-#include "NimBLEDevice.h"
 
 static auto TAG = "BSC";
 
